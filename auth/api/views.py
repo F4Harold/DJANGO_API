@@ -1,43 +1,43 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from .models import (
-    auditoria_login,
-    credencial,
-    rol,
-    tipo_documento,
-    usuario,
-    usuario_rol
+    AuditoriaLogin,
+    Credencial,
+    Rol,
+    TipoDocumento,
+    Usuario,
+    UsuarioRol
 )
 from .serializers import (
-    auditoria_loginSerializer,
-    credencialSerializers,
-    rolSerializer,
-    tipo_documentoSerializers,
-    usuarioSerializers,
-    usuario_rolSerializers
+    AuditoriaLoginSerializer,
+    CredencialSerializers,
+    RolSerializer,
+    Tipo_DocumentoSerializers,
+    UsuarioSerializers,
+    Usuario_RolSerializers
 )
 
 class auditoria_loginViewSet(viewsets.ModelViewSet):
-    queryset = auditoria_login.objects.all()
-    serializer_class = auditoria_loginSerializer
+    queryset = AuditoriaLogin.objects.all()
+    serializer_class = AuditoriaLoginSerializer
     
 class credencialViewSet(viewsets.ModelViewSet):
-    queryset = credencial.objects.all()
-    serializer_class = credencialSerializers
+    queryset = Credencial.objects.all()
+    serializer_class = CredencialSerializers
     
 class rolViewSet(viewsets.ModelViewSet):
-    queryset = rol.objects.all()
-    serializer_class = rolSerializer
+    queryset = Rol.objects.all()
+    serializer_class = RolSerializer
     
 class tipo_documentoViewSet(viewsets.ModelViewSet):
-    queryset = tipo_documento.objects.all()
-    serializer_class = tipo_documentoSerializers
+    queryset = TipoDocumento.objects.all()
+    serializer_class = Tipo_DocumentoSerializers
     
 class usuarioViewSet(viewsets.ModelViewSet):
-    queryset = usuario.objects.all()
-    serializer_class = usuarioSerializers
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioSerializers
     
 class usuario_rolViewSet(viewsets.ModelViewSet):
-    queryset = usuario_rol.objects.all()
-    serializer_class = usuario_rolSerializers
+    queryset = UsuarioRol.objects.all()
+    serializer_class = Usuario_RolSerializers
     
