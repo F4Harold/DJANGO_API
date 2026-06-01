@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
+DEBUG = config('DEBUG', default=False)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-j5gh4bzvhy0i%s0dka_g1k$arnd_lx#cp6o+3a&#=d^)i0^n6)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False)
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+        # APP para usar el API REST
+    'rest_framework',
+    # APP para usar swagger    'drf_yasg',
+    'drf_yasg',
+    # APP del api
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -74,8 +82,22 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        #Definicion del motor de la base de datos, en este caso se usara postgresql
+        'ENGINE': 'django.db.backends.postgresql',
+        #Definicion del nombre de la base de datos
+        'NAME': config('DB_NAME'),
+        #Definicion del usuario de la base de datos
+        'USER': config('DB_USER'),
+        #Definicion de la contraseña del usuario de la base de datos
+        'PASSWORD': config('DB_PASSWORD'),
+        #Definicion del host de la base de datos
+        'HOST': config('DB_HOST'),
+        #Definicion del puerto de la base de datos
+        'PORT': config('DB_PORT'),
+        #Definicion de las opciones de la base de datos, en este caso se usara el esquema 
+        'OPTIONS': {
+            'options': f'-c search_path={config("DB_SCHEMA")}'
+        },
     }
 }
 
