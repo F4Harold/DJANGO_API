@@ -15,7 +15,7 @@ class EstadoPqr(models.Model):
 
     class Meta:
         # tabla sql
-        db_table = 'soporte\".\"estado_pqr'
+        db_table = 'estado_pqr'
 
 
 # modelo tabla pqr
@@ -37,7 +37,7 @@ class Pqr(models.Model):
 
     class Meta:
         # tabla sql
-        db_table = 'soporte\".\"pqr'
+        db_table = 'pqr'
 
 
 # modelo tabla adjunto
@@ -61,7 +61,7 @@ class Adjunto(models.Model):
 
     class Meta:
         # tabla sql
-        db_table = 'soporte\".\"adjunto'
+        db_table = 'adjunto'
 
 
 # modelo tabla registro_actividad
@@ -79,4 +79,4 @@ class RegistroActividad(models.Model):
 
     class Meta:
         # tabla sql
-        db_table = 'soporte\".\"registro_actividad'
+        db_table = 'registro_actividad'
