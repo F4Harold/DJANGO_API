@@ -1,42 +1,39 @@
 from rest_framework import serializers
 from .models import (
-    auditoria_login,
-    credencial,
-    rol,
-    tipo_documento,
-    usuario,
-    usuario_rol
+    AuditoriaLogin,
+    Credencial,
+    Rol,
+    TipoDocumento,
+    Usuario,
+    UsuarioRol
 )
 
 class AuditoriaLoginSerializer(serializers.ModelSerializer):
     class Meta:
-        model = auditoria_login
+        model = AuditoriaLogin  # ← mayúscula
         fields = '__all__'
-        
+
 class CredencialSerializers(serializers.ModelSerializer):
     class Meta:
-        model = credencial
+        model = Credencial  # ← mayúscula
         fields = '__all__'
-        
-        
+
 class RolSerializer(serializers.ModelSerializer):
     class Meta:
-        model = rol
+        model = Rol  # ← mayúscula
         fields = '__all__'
-    
-class Tipo_DocumentoSerializers(serializers.ModelSerializers):
+
+class TipoDocumentoSerializers(serializers.ModelSerializer):
     class Meta:
-        model = tipo_documento
+        model = TipoDocumento  # ← mayúscula
         fields = '__all__'
-        
+
 class UsuarioSerializers(serializers.ModelSerializer):
     class Meta:
-        model = usuario 
+        model = Usuario  # ← mayúscula
         fields = '__all__'
-        
-class Usuario_RolSerializers(serializers.ModelSerializers):
+
+class UsuarioRolSerializers(serializers.ModelSerializer):
     class Meta:
-        model = usuario_rol
+        model = UsuarioRol  # ← mayúscula
         fields = '__all__'
-        
-        

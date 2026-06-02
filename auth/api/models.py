@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class Rol(models.Model):
     id_rol = models.AutoField(primary_key=True)
     nombre_rol = models.CharField(max_length=100, unique=True)
@@ -9,8 +8,7 @@ class Rol(models.Model):
     activo = models.BooleanField(default=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha_modificacion = models.DateTimeField(auto_now=True)
-    
-    
+
     def __str__(self):
         return self.nombre_rol
 
@@ -18,8 +16,6 @@ class Rol(models.Model):
         db_table = '"auth"."rol"'
         verbose_name = 'Rol'
         verbose_name_plural = 'Roles'
-
-   
 
 
 class TipoDocumento(models.Model):
@@ -54,7 +50,7 @@ class Usuario(models.Model):
     telefono = models.CharField(max_length=20, null=True, blank=True)
     cedula = models.CharField(max_length=50, unique=True, null=True, blank=True)
     ciudad = models.CharField(max_length=100, null=True, blank=True)
-    estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='activo')
+    estado = models.CharField(max_length=20, default='activo')
     fecha_registro = models.DateTimeField(auto_now_add=True, null=True)
     fecha_ultima_sesion = models.DateTimeField(null=True, blank=True)
     activo = models.BooleanField(default=True)
@@ -79,7 +75,7 @@ class Credencial(models.Model):
     )
     contrasena_hash = models.CharField(max_length=255)
     salt = models.CharField(max_length=100)
-    algoritmo = models.CharField(max_length=20, choices=ALGORITMO_CHOICES, default='bcrypt')
+    algoritmo = models.CharField(max_length=20)
     fecha_actualizacion = models.DateTimeField(auto_now=True, null=True)
     fecha_ultimo_cambio = models.DateTimeField(null=True, blank=True)
     intentos_fallidos = models.IntegerField(default=0)
@@ -132,11 +128,11 @@ class AuditoriaLogin(models.Model):
         on_delete=models.CASCADE,
         db_column='id_usuario'
     )
-    tipo_evento = models.CharField(max_length=30, choices=TIPO_EVENTO_CHOICES, default='login')
+    tipo_evento = models.CharField(max_length=30)
     ip_address = models.CharField(max_length=45, null=True, blank=True)
     navegador = models.CharField(max_length=200, null=True, blank=True)
     fecha_evento = models.DateTimeField(auto_now_add=True, null=True)
-    estado_evento = models.CharField(max_length=20, choices=ESTADO_EVENTO_CHOICES, default='exitoso')
+    estado_evento = models.CharField(max_length=20, default='exitoso')
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     class Meta:
